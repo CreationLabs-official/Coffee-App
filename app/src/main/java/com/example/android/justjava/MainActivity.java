@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
+
 import com.example.android.justjava.R;
 
 
@@ -18,11 +20,12 @@ import com.example.android.justjava.R;
  * This app displays an order form to order coffee.
  */
 public class MainActivity extends AppCompatActivity {
-    int quantity=2;
+    int quantity=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
     }
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         String message="Total:"+quantity*5;
         displayMessage(message);
+        Toast.makeText(getApplicationContext(),"Thanks for ordering coffee,,Cost of each coffee is $5",Toast.LENGTH_SHORT).show();
     }
     public void increment(View view) {
         quantity=quantity+1;
@@ -49,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
      * This method displays the given quantity value on the screen.
      */
     private void display(int number) {
-        TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
+       TextView quantityTextView = (TextView) findViewById(R.id.quantity_text_view);
         quantityTextView.setText("" + number);
     }
     private void displayMessage(String message) {
@@ -57,7 +61,10 @@ public class MainActivity extends AppCompatActivity {
         priceTextView.setText(message);
     }
     private void displayPrice(int number) {
+        int number1=0;
         TextView priceTextView = (TextView) findViewById(R.id.price_text_view);
         priceTextView.setText(NumberFormat.getCurrencyInstance().format(number));
+        //quantityTextView.setText("" + number1);
+
     }
 }
